@@ -2,8 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
-import fs from 'fs/promises';
-import path from 'path';
+import * as personas from './personas.js';
 
 dotenv.config();
 
@@ -24,8 +23,10 @@ app.post('/api/chat', async (req, res) => {
 
     let systemPrompt = '';
     try {
-      const filePath = path.join(process.cwd(), `${persona}.md`);
-      systemPrompt = await fs.readFile(filePath, 'utf-8');
+      systemPrompt = personas[persona];
+      if (!systemPrompt) {
+        throw new Error("Persona not found");
+      }
     } catch (err) {
       return res.status(400).json({ error: `Could not load persona file for ${persona}` });
     }
