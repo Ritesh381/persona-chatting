@@ -7,12 +7,17 @@ import './App.css';
 const apiEndpoint = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/chat';
 
 const personas = [
+  { id: 'kshitij', name: 'Kshitij Mishra', icon: <Activity size={16} /> },
   { id: 'anshuman', name: 'Anshuman Singh', icon: <TerminalSquare size={16} /> },
-  { id: 'abhimanyu', name: 'Abhimanyu Saxena', icon: <LayoutTemplate size={16} /> },
-  { id: 'kshitij', name: 'Kshitij Mishra', icon: <Activity size={16} /> }
+  { id: 'abhimanyu', name: 'Abhimanyu Saxena', icon: <LayoutTemplate size={16} /> }
 ];
 
 const suggestions = {
+  kshitij: [
+    "I'm feeling completely stuck on this bug, how should I debug it?", 
+    "Can you explain recursion using a simple real-world analogy?", 
+    "Sir should I leave scaler school of technology"
+  ],
   anshuman: [
     "How would you design the backend for Facebook Messenger?", 
     "How do I approach a complex system design problem?", 
@@ -22,11 +27,6 @@ const suggestions = {
     "How do I transition from writing code to building a product?", 
     "What do early-stage startups look for in a founding engineer?", 
     "How should I structure my side projects to maximize impact?"
-  ],
-  kshitij: [
-    "I'm feeling completely stuck on this bug, how should I debug it?", 
-    "Can you explain recursion using a simple real-world analogy?", 
-    "What's a good mental model to understand how APIs work?"
   ]
 };
 
